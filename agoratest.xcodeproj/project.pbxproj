@@ -11,6 +11,9 @@
 		4C580E8F2B03FEDA00F1908C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C580E8E2B03FEDA00F1908C /* ContentView.swift */; };
 		4C580E912B03FEDC00F1908C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C580E902B03FEDC00F1908C /* Assets.xcassets */; };
 		4C580E942B03FEDC00F1908C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C580E932B03FEDC00F1908C /* Preview Assets.xcassets */; };
+		4C580E9C2B03FF3400F1908C /* AgoraAppGroupDataHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 4C580E9B2B03FF3400F1908C /* AgoraAppGroupDataHelper */; };
+		4C580E9E2B03FF3400F1908C /* AgoraBroadcastExtensionHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 4C580E9D2B03FF3400F1908C /* AgoraBroadcastExtensionHelper */; };
+		4C580EA02B03FF3400F1908C /* AgoraUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4C580E9F2B03FF3400F1908C /* AgoraUIKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C580E9C2B03FF3400F1908C /* AgoraAppGroupDataHelper in Frameworks */,
+				4C580E9E2B03FF3400F1908C /* AgoraBroadcastExtensionHelper in Frameworks */,
+				4C580EA02B03FF3400F1908C /* AgoraUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,11 @@
 			dependencies = (
 			);
 			name = agoratest;
+			packageProductDependencies = (
+				4C580E9B2B03FF3400F1908C /* AgoraAppGroupDataHelper */,
+				4C580E9D2B03FF3400F1908C /* AgoraBroadcastExtensionHelper */,
+				4C580E9F2B03FF3400F1908C /* AgoraUIKit */,
+			);
 			productName = agoratest;
 			productReference = 4C580E892B03FEDA00F1908C /* agoratest.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 4C580E802B03FEDA00F1908C;
+			packageReferences = (
+				4C580E9A2B03FF3400F1908C /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */,
+			);
 			productRefGroup = 4C580E8A2B03FEDA00F1908C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,6 +289,8 @@
 				DEVELOPMENT_TEAM = 3YWFK2YH9J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = needed;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = needed;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +320,8 @@
 				DEVELOPMENT_TEAM = 3YWFK2YH9J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = needed;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = needed;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,6 +362,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4C580E9A2B03FF3400F1908C /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO-Community/VideoUIKit-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4C580E9B2B03FF3400F1908C /* AgoraAppGroupDataHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C580E9A2B03FF3400F1908C /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraAppGroupDataHelper;
+		};
+		4C580E9D2B03FF3400F1908C /* AgoraBroadcastExtensionHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C580E9A2B03FF3400F1908C /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraBroadcastExtensionHelper;
+		};
+		4C580E9F2B03FF3400F1908C /* AgoraUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C580E9A2B03FF3400F1908C /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraUIKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4C580E812B03FEDA00F1908C /* Project object */;
 }

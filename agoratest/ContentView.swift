@@ -6,19 +6,70 @@
 //
 
 import SwiftUI
+import AgoraUIKit
 
 struct ContentView: View {
+    @State private var connectedToChannel = false
+
+    static var agview = AgoraViewer(
+        connectionData: AgoraConnectionData(
+            appId: "61d33504667448f59cab0672fe765ccd",
+            rtcToken: "nil"
+        ),
+        style: .floating
+    )
+
+    @State private var agoraViewerStyle = 0
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            ContentView.agview
+            VStack {
+                Picker("Format", selection: $agoraViewerStyle) {
+                    Text("Floating").tag(0)
+                    Text("Grid").tag(1)
+                }.pickerStyle(SegmentedPickerStyle())
+                .frame(
+                    minWidth: 0, idealWidth: 100, maxWidth: 200,
+                    minHeight: 0, idealHeight: 40, maxHeight: .infinity, alignment: .topTrailing
+                ).onChange(
+                    of: agoraViewerStyle,
+                    perform: {
+                        ContentView.agview.viewer.style = $0 == 0 ? .floating : .grid
+                    }
+                )
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(
+                        action: { connectToAgora() },
+                        label: {
+                            if connectedToChannel {
+                                Text("Disconnect").padding(3.0).background(Color.red).cornerRadius(3.0).hidden()
+                            } else {
+                                Text("Connect").padding(3.0).background(Color.green).cornerRadius(3.0)
+                            }
+                        }
+                    )
+                    Spacer()
+                }
+                Spacer()
+            }
         }
-        .padding()
+
+    }
+
+    func connectToAgora() {
+        connectedToChannel.toggle()
+        if connectedToChannel {
+            ContentView.agview.join(channel: "test", with: nil, as: .broadcaster)
+        } else {
+            ContentView.agview.viewer.leaveChannel()
+        }
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
